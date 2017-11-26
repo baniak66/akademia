@@ -24,7 +24,11 @@ class Tictactoe
       update_hits(valid_shot, hits, current_player)
       print_board(hits)
     end
-    puts "Game won by: Player #{current_player}"
+    if board_full?(hits)
+      puts "That's a tie!"
+    else
+      puts "Game won by: Player #{current_player}!"
+    end
   end
 
   private
@@ -41,6 +45,10 @@ class Tictactoe
     -------------
     | #{hits[6]} | #{hits[7]} | #{hits[8]} |
     -------------"
+  end
+
+  def board_full?(board)
+    board.select{ |i| i == "X" or i == "O" }.length == 9 ? true : false
   end
 
   def update_hits(position, board, player)
@@ -69,10 +77,12 @@ class Tictactoe
   end
 
   def check_winer(board, player)
+    return true if board_full?(board)
     win_options = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6],
                     [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
     player_hits = board.each_index.select{|i| board[i] == player}
-    result = win_options.include?(player_hits)? true : false
+    filtered_hits = win_options.map{ |i| i & player_hits }.select{ |i| i.length == 3 }
+    result = win_options.include?(filtered_hits.first)? true : false
   end
 
 end
