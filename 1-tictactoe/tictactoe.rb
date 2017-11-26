@@ -14,8 +14,14 @@ class Tictactoe
     until check_winer(hits, current_player) do
       current_player == "X" ? current_player = "O" : current_player = "X"
       print "Player #{current_player} turn. Type cell address: "
-      address = gets
-      update_hits(address, hits, current_player)
+      address = gets.chomp
+      valid_shot = check_position(address, hits)
+      until valid_shot do
+        print "You gave wrong address, try one more time: "
+        address = gets.chomp
+        valid_shot = check_position(address, hits)
+      end
+      update_hits(valid_shot, hits, current_player)
       print_board(hits)
     end
     puts "Game won by: Player #{current_player}"
@@ -38,18 +44,27 @@ class Tictactoe
   end
 
   def update_hits(position, board, player)
-    position.delete!("\n").capitalize!
-    case position
-      when "A1"; board[0] = player
-      when "A2"; board[1] = player
-      when "A3"; board[2] = player
-      when "B1"; board[3] = player
-      when "B2"; board[4] = player
-      when "B3"; board[5] = player
-      when "C1"; board[6] = player
-      when "C2"; board[7] = player
-      when "C3"; board[8] = player
-      else puts "You gave wrong address"
+    board[position] = player
+  end
+
+  def check_position(address, board)
+    address.capitalize!
+    case address
+      when "A1"; position = 0
+      when "A2"; position = 1
+      when "A3"; position = 2
+      when "B1"; position = 3
+      when "B2"; position = 4
+      when "B3"; position = 5
+      when "C1"; position = 6
+      when "C2"; position = 7
+      when "C3"; position = 8
+      else false
+    end
+    if position and board[position] == " "
+      position
+    else
+      false
     end
   end
 
@@ -61,3 +76,5 @@ class Tictactoe
   end
 
 end
+
+
