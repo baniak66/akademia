@@ -15,12 +15,16 @@ class TictactoeTest < Minitest::Test
   end
 
   def test_user_X_win
-    board = ["X","X","X","O"," ","O"," "," "," "]
+    board = ["X","X","X",
+             "O"," ","O",
+             " "," "," "]
     assert @tictactoe.send(:check_winer, board, "X")
   end
 
   def test_user_X_lose
-    board = ["X","O","X","O","X","O","O","X","O"]
+    board = ["X","O","X",
+             "O","O","O",
+             "O","X"," "]
     refute @tictactoe.send(:check_winer, board, "X")
   end
 
@@ -36,5 +40,20 @@ class TictactoeTest < Minitest::Test
     board = ["X"," "," "," "," "," "," "," "," "]
     refute @tictactoe.send(:check_position, "a1", board)
   end
+
+  def test_board_full
+    board = ["X","O","X",
+             "X","X","O",
+             "O","X","O"]
+    assert @tictactoe.send(:board_full?, board)
+  end
+
+  def test_board_not_full
+    board = ["X","O","X",
+             "X","X","O",
+             "O"," ","O"]
+    refute @tictactoe.send(:board_full?, board)
+  end
+
 end
 
