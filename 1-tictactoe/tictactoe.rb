@@ -1,12 +1,15 @@
 class Tictactoe
-
-  def play
+  def initialize
     # Game instructions
-    puts "Welcome Players in the TicTacToe game!
-    To hit desired position just type cell address as shown bellow."
+    puts <<~HEREDOC
+      Welcome Players in the TicTacToe game!
+      To hit desired position just type cell address as shown bellow.
+    HEREDOC
     positions = %w(A1 A2 A3 B1 B2 B3 C1 C2 C3)
     print_board(positions)
+  end
 
+  def play
     # Start game
     puts "Lets play!"
     current_player = "X"
@@ -38,17 +41,20 @@ class Tictactoe
   end
 
   def print_board(hits)
-    puts "    -------------
-    | #{hits[0]} | #{hits[1]} | #{hits[2]} |
-    -------------
-    | #{hits[3]} | #{hits[4]} | #{hits[5]} |
-    -------------
-    | #{hits[6]} | #{hits[7]} | #{hits[8]} |
-    -------------"
+    puts <<~HEREDOC
+      -------------
+      | #{hits[0]} | #{hits[1]} | #{hits[2]} |
+      -------------
+      | #{hits[3]} | #{hits[4]} | #{hits[5]} |
+      -------------
+      | #{hits[6]} | #{hits[7]} | #{hits[8]} |
+      -------------
+    HEREDOC
+
   end
 
   def board_full?(board)
-    board.select{ |i| i == "X" or i == "O" }.length == 9 ? true : false
+    !board.include? ' '
   end
 
   def update_hits(position, board, player)
@@ -67,9 +73,9 @@ class Tictactoe
       when "C1"; position = 6
       when "C2"; position = 7
       when "C3"; position = 8
-      else false
+      else position = board.size
     end
-    if position and board[position] == " "
+    if board[position] == " "
       position
     else
       false
@@ -78,11 +84,10 @@ class Tictactoe
 
   def check_winer(board, player)
     return true if board_full?(board)
-    win_options = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6],
-                    [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
+    magic_square = [4, 9, 2, 3, 5, 7, 8, 1, 6]
     player_hits = board.each_index.select{|i| board[i] == player}
-    filtered_hits = win_options.map{ |i| i & player_hits }.select{ |i| i.length == 3 }
-    result = win_options.include?(filtered_hits.first)? true : false
+    hits_values = player_hits.map { |hit| hit = magic_square[hit] }
+    hits_values.combination(3).to_a.any? { |option| option.reduce(:+) == 15 }
   end
 
 end
