@@ -14,7 +14,16 @@ class BinaryTree
   end
 
   def self.create(array)
-    ### tutaj umiesc swoj kod
+    return nil if array.empty?
+    array.sort!.uniq!
+    mid = array[array.length / 2]
+    left_arr = array.select { |el| el < mid }
+    right_arr = array.select { |el| el > mid }
+    BinaryTree.new(
+      BinaryTree.create(left_arr),
+      BinaryTree.create(right_arr),
+      mid
+    )
   end
 
   def generate_graph_tree
