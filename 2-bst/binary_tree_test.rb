@@ -5,7 +5,10 @@ require_relative 'binary_tree'
 
 class BinaryTreeTest < Minitest::Test
   def test_tree_from_empty_array
-    assert_nil BinaryTree.create([])
+    tree = BinaryTree.create([])
+    assert_equal nil.to_s, tree.value
+    assert_nil tree.left
+    assert_nil tree.right
   end
 
   def test_tree_from_one_element_array

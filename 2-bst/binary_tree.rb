@@ -13,17 +13,24 @@ class BinaryTree
     @value = value.to_s
   end
 
+  def self.build_node(array)
+    if array.empty?
+      nil
+    else
+      mid = array[array.length / 2]
+      left_arr, right_arr = array.partition { |el| el < mid }
+      right_arr = right_arr.drop(1)
+      BinaryTree.new(
+        BinaryTree.build_node(left_arr),
+        BinaryTree.build_node(right_arr),
+        mid
+      )
+    end
+  end
+
   def self.create(array)
-    return nil if array.empty?
-    array.sort!.uniq!
-    mid = array[array.length / 2]
-    left_arr = array.select { |el| el < mid }
-    right_arr = array.select { |el| el > mid }
-    BinaryTree.new(
-      BinaryTree.create(left_arr),
-      BinaryTree.create(right_arr),
-      mid
-    )
+    return BinaryTree.new(nil,nil,nil) if array.empty?
+    build_node(array.sort)
   end
 
   def generate_graph_tree
