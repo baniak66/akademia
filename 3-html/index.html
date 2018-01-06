@@ -6,15 +6,15 @@
     <title>Title of the Page</title>
   </head>
   <body>
-    <div id="header">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Company</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
+    <header>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Company</a>
+        <a href="#">Blog</a>
+      </nav>
       <img src="logo.jpg" alt="Logo">
-    </div>
+    </header>
 
     <div id="main">
       <h1>Welcome to our page!</h1>
@@ -26,8 +26,6 @@
         <form method="post" action="" id="form1">
           <div>
             <input type="checkbox" name="chbox1" value="1">not selected</input>
-          </div>
-          <div>
             <input type="checkbox" name="chbox2" value="2" checked="true">selected</input>
           </div>
           <div>
@@ -56,23 +54,23 @@
         </form>
         <button type="submit" form="form1" value="Submit">Submit form</button>
       </div>
-      <div>
+      <aside>
         <input type="text" placeholder="search">
         <ul>
-          <li>
+          <figure>
             <img src="image1.jpg" alt="Image">
-            <p>Image description, realy interesting things about this image</p>
-          </li>
-          <li>
+            <figcaption>Image description, realy interesting things about this image</figcaption>
+          </figure>
+          <figure>
             <img src="image2.jpg" alt="Image">
-            <p>Image description, realy interesting things about this image</p>
-          </li>
-          <li>
+            <figcaption>Image description, realy interesting things about this image</figcaption>
+          </figure>
+          <figure>
             <img src="image3.jpg" alt="Image">
-            <p>Image description, realy interesting things about this image</p>
-          </li>
+            <figcaption>Image description, realy interesting things about this image</figcaption>
+          </figure>
         </ul>
-      </div>
+      </aside>
     </div>
   </body>
 </html>
