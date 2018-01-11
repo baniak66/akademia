@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require(:default)
 
 require 'sinatra/reloader'
+require 'fast_secure_compare/fast_secure_compare'
 
 enable :sessions
 
@@ -24,7 +25,7 @@ post '/login' do
     timestamp = pass_array[2]
 
     hashed_password = Digest::SHA2.new(512).hexdigest(salt+"#"+params[:password]+"#"+timestamp)
-    if hashed_password == pass
+    if FastSecureCompare.compare(hashed_password, pass)
       session[:logged] = true
       erb :logged
     else
