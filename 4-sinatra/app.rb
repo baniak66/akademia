@@ -2,6 +2,7 @@ require 'bundler'
 
 Bundler.require(:default)
 
+require "sinatra"
 require 'sinatra/reloader'
 require 'fast_secure_compare/fast_secure_compare'
 
