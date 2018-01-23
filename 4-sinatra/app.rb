@@ -20,10 +20,10 @@ post '/login' do
   if session[:logged]
     erb :logged
   else
-    pass_array = File.open("password.txt").read.split(":")
-    salt = pass_array[0]
-    pass = pass_array[1]
-    timestamp = pass_array[2]
+    pass_hash = [:salt, :pass, :timestamp].zip(File.open("password.txt").read.split(":")).to_h
+    salt = pass_hash[:salt]
+    pass = pass_hash[:pass]
+    timestamp = pass_hash[:timestamp]
 
     hashed_password = Digest::SHA2.new(512).hexdigest(salt+"#"+params[:password]+"#"+timestamp)
     if FastSecureCompare.compare(hashed_password, pass)
