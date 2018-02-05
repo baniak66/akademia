@@ -1,1 +1,16 @@
+%head
+  %link{:href => "/style.css", :rel => "stylesheet", :type => "text/css"}/
+
 %h3 Zaznacz pola rozpoczynające grę...
+
+%form{:action => "/set", :method => "POST"}
+  %table
+    %tbody
+      -@board.each_with_index do |row, row_index|
+        %tr
+          -row.each_with_index do |col, col_index|
+            %td{:class => "#{col}", :id => "#{row_index}#{col_index}"}
+              %input{:name => "#{row_index}#{col_index}", :type => "hidden", :value => "dead"}
+              %input{:name => "#{row_index}#{col_index}", :type => "checkbox", :value => "live"}
+  %br
+  %button{:type => "submit"} wyślij

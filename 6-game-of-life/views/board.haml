@@ -1,0 +1,14 @@
+%head
+  %link{:href => "/style.css", :rel => "stylesheet", :type => "text/css"}/
+
+%form{:action => "/update", :method => "POST"}
+  %table
+    %tbody
+      -@board.each_with_index do |row, row_index|
+        %tr
+          -row.each_with_index do |col, col_index|
+            -address = "#{row_index}#{col_index}"
+            %td{:class => "#{@board_state[address]}", :id => "#{address}"}
+              %input{:name => "#{row_index}#{col_index}", :type => "hidden", :value => "#{@board_state[address]}"}
+  %br
+  %button{:type => "submit"} odświerz
