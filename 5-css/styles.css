@@ -1,0 +1,170 @@
+body {
+  width: 100%;
+  background-color: #cccccc
+}
+
+.welcome-text {
+  padding-left: 10px;
+}
+
+.form-info {
+  padding-left: 10px;
+}
+
+nav {
+  width: 100%;
+  line-height: 50px;
+  display: inline;
+  display:inline-block;
+  background-color: white
+}
+
+nav img{
+  padding: 10px;
+  float: right;
+  display:inline-block;
+}
+
+nav ul {
+  list-style-type: none;
+  display:inline-block;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+nav ul li {
+  display: inline;
+  list-style-type: none;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li:not(:first-child):before {
+  content: " | ";
+}
+
+main {
+  float: left;
+  width: 70%;
+  background-color: #cccccc;
+}
+
+main form > div:first-child{
+  background-color: white;
+  border: 2px solid #808080;
+  padding: 10px;
+  margin: 10px;
+}
+
+aside {
+  float: right;
+  width: 30%;
+  background-color: #cccccc;
+}
+
+aside ul {
+  list-style-type: none;
+  background-color: white;
+  text-align: left;
+  border: 2px solid #808080;
+  padding: 10px;
+  margin: 10px;
+}
+
+aside img {
+    height: 100%;
+    width: 100%;
+}
+
+.form-body {
+  display: inline-block;
+  text-align: center;
+}
+
+.options {
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+
+.user-details {
+  float: left;
+  width: 50%;
+}
+
+#mySearch {
+  padding: 10px;
+  margin: 10px;
+  width:95%
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=tel] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.more-info {
+  margin: 8px 0;
+  margin-left: 20px;
+  box-sizing: border-box;
+  float: left;
+}
+.more-info:before {
+    content: '';
+    background:url('question.png');
+    background-size:cover;
+    position:absolute;
+    width:20px;
+    height:20px;
+    margin-left:-20px;
+}
+
+.form-button {
+    background-color: white;
+    border: 2px solid #808080;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px;
+    float: right;
+}
+
+a:link {
+  text-decoration: none;
+  color : red;
+}
+
+a:visited {
+  color: red;
+}
+
+a:hover {
+  color: blue;
+}
+
+.options div {
+  width: 100%;
+  margin: 30px 0;
+  box-sizing: border-box;
+}
+
+.options select {
+  width: 70%;
+  margin: 30px 0;
+  box-sizing: border-box;
+}
