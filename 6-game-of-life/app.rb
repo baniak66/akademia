@@ -2,6 +2,7 @@ require 'bundler'
 
 Bundler.require(:default)
 
+require 'sinatra'
 require 'sinatra/reloader'
 require 'haml'
 require './game.rb'
