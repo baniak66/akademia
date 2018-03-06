@@ -1,0 +1,14 @@
+td {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+table {
+  border-spacing: 0;
+  border: 1px solid black;
+}
+
+.live {
+  background-color: black;
+}

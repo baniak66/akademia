@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'haml'
+gem 'rubocop', '~> 0.53.0', require: false
+gem 'sinatra'
+gem 'sinatra-contrib'
